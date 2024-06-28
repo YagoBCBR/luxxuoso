@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998498619865",
+    "project_id": "luxxuoso-bc535",
+    "storage_bucket": "luxxuoso-bc535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998498619865:android:488079777561d3aab709c8",
+        "android_client_info": {
+          "package_name": "com.luxxuoso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY3YIbw9CSIBlzEYwhPanaB6xrHTxk_mQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
