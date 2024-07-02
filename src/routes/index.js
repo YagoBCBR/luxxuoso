@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 
 import AuthRoutes from './auth.routes';
 import AppRoutes from './app.routes';
@@ -9,13 +9,21 @@ function Routes(){
     const loading = false;
     
     if(loading){
-        <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#36393f'}}>
-            <ActivityIndicator size={50} color="#E52246" />
-        </View>
+        return(
+            <View 
+            style={{
+                flex:1, 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                backgroundColor: '#fff'
+            }}>
+                <ActivityIndicator size={50} color="#995D90" />
+            </View>
+        )    
     }
 
     return(
-        signed ? <AppRoutes/> : <AppRoutes/>
+        signed ? <AppRoutes/> : <AuthRoutes/>
     )
 }
 

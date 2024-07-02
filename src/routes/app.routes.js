@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../pages/Home';
 import Feed from '../pages/Feed';
 import ClubeDePontos from '../pages/ClubeDePontos';
-import EditProfile from '../pages/EditProfile';
 import NewPost from '../pages/NewPost';
 import Profile from '../pages/Profile';
 import Search from '../pages/Search';
@@ -16,11 +15,10 @@ function AppRoutes(){
         <Tab.Navigator>
             <Tab.Screen name='Home' component={Home} />
             <Tab.Screen name='Feed' component={Feed} />
-            <Tab.Screen name='ClubeDePontos' component={ClubeDePontos} />
-            <Tab.Screen name='EditProfile' component={EditProfile} />
-            <Tab.Screen name='NewPost' component={NewPost} />
-            <Tab.Screen name='Profile' component={Profile} />
-            <Tab.Screen name='Search' component={Search} />
+            <Tab.Screen name='Clube' component={ClubeDePontos} />
+            <Tab.Screen name='Postar' component={NewPost} />
+            <Tab.Screen name='Perfil' component={Profile} />
+            <Tab.Screen name='Pesquisar' component={Search} />
         </Tab.Navigator>
     )
 }
