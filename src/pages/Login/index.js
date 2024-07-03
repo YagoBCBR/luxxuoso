@@ -10,12 +10,12 @@ function Login(){
                 <Text style={{ color: '#995D90' }}>Luxxuoso</Text>
             </Title>
 
-            <input
+            <Input
                 placeholder="seuemail@teste.com.br"
             />
 
             
-            <input
+            <Input
                 placeholder="************"
             />
 
