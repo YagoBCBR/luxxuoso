@@ -6,7 +6,6 @@ import Feed from '../pages/Feed';
 import ClubeDePontos from '../pages/ClubeDePontos';
 import NewPost from '../pages/NewPost';
 import Profile from '../pages/Profile';
-import Search from '../pages/Search';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +17,6 @@ function AppRoutes(){
             <Tab.Screen name='Clube' component={ClubeDePontos} />
             <Tab.Screen name='Postar' component={NewPost} />
             <Tab.Screen name='Perfil' component={Profile} />
-            <Tab.Screen name='Pesquisar' component={Search} />
         </Tab.Navigator>
     )
 }
