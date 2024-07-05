@@ -1,26 +1,36 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { Container, Title, Input, Button, ButtonText } from './styles';
+import { Container, 
+        Title, 
+        Logo, 
+        Input, 
+        Button, 
+        ButtonText,
+        AreaInput } from './styles';
 
 function Login(){
     return(
         <Container>
-            <Title>
-                <Text style={{ color: '#995D90' }}>Luxxuoso</Text>
-            </Title>
-
-            <Input
-                placeholder="seuemail@teste.com.br"
-            />
-
             
-            <Input
-                placeholder="************"
+            <Logo
+                source={require('../../assets/luxxuoso.png')}
             />
+            
+            <AreaInput>
+                <Input
+                    placeholder="seuemail@teste.com.br"
+                />
+            </AreaInput>
+            
+            <AreaInput>    
+                <Input
+                    placeholder="************"
+                />
+            </AreaInput>
 
             <Button>
-                <ButtonText>Acessar</ButtonText>
+                <ButtonText>ENTRAR</ButtonText>
             </Button>
 
         </Container>
