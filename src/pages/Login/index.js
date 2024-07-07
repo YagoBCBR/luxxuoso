@@ -19,11 +19,38 @@ import {
 
 function Login(){
     const [login, setLogin] = useState(true);
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [confirmationEmail, setConfirmationEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmationPassword, setConfirmationPassword] = useState("");
+    const [birthdate, setBirthdate] = useState("");
 
     function toggleLogin(){
         setLogin(!login)
     }
     
+    function handleSignIn(){
+        if(email === '' || password === ''){
+            console.log("PREENCHA TODOS OS CAMPOS")
+            return
+        }
+
+        // Fazer o login do user
+
+    }
+
+    function handleSignUp(){
+        if(name === '' || username === '' || email === '' || confirmationEmail === '' || confirmationEmail != email || password === '' || confirmationPassword === '' || confirmationPassword != password || birthdate === ''){
+            console.log("PREENCHA TODOS OS CAMPOS PARA CADASTRAR")
+            return
+        }
+
+        // Fazer o login do user
+        
+    }
+
     if (login){
         return(
             <Container>
@@ -33,14 +60,18 @@ function Login(){
                 <AreaInput>
                     <Input
                         placeholder="Digite seu usuário"
+                        value={email}
+                        onChangeText={ (text) => setEmail(text) }
                     />
                 </AreaInput>
                 <AreaInput>    
                     <Input
                         placeholder="Digite sua senha"
+                        value={password}
+                        onChangeText={ (text) => setPassword(text) }
                     />
                 </AreaInput>
-                <Button>
+                <Button onPress={handleSignIn}>
                     <ButtonText>ENTRAR</ButtonText>
                 </Button>
                 <View>
@@ -62,37 +93,56 @@ function Login(){
             <AreaInput>
                 <WelcomeSubTitle>Preencha os dados abaixo e crie sua conta!</WelcomeSubTitle>
             </AreaInput>
+            <AreaInput>    
+                <Input
+                    placeholder="Digite seu nome"
+                    value={name}
+                    onChangeText={ (text) => setName(text) }
+                />
+            </AreaInput>
             <AreaInput>
                 <Input
                     placeholder="Digite seu usuário"
+                    value={username}
+                    onChangeText={ (text) => setUsername(text) }
                 />
             </AreaInput>
             <AreaInput>    
                 <Input
                     placeholder="Digite seu e-mail"
+                    value={email}
+                    onChangeText={ (text) => setEmail(text) }
                 />
             </AreaInput>
             <AreaInput>    
                 <Input
                     placeholder="Confirme seu e-mail"
+                    value={confirmationEmail}
+                    onChangeText={ (text) => setConfirmationEmail(text) }
                 />
             </AreaInput>
             <AreaInput>    
                 <Input
                     placeholder="Digite sua senha"
+                    value={password}
+                    onChangeText={ (text) => setPassword(text) }
                 />
             </AreaInput>
             <AreaInput>    
                 <Input
                     placeholder="Confirme sua senha"
+                    value={confirmationPassword}
+                    onChangeText={ (text) => setConfirmationPassword(text) }
                 />
             </AreaInput>
             <AreaInput>    
                 <Input
                     placeholder="Qual é a data do seu aniversário?"
+                    value={birthdate}
+                    onChangeText={ (text) => setBirthdate(text) }
                 />
             </AreaInput>
-            <Button>
+            <Button onPress={handleSignUp}>
                 <ButtonText>CRIAR CONTA</ButtonText>
             </Button>
             <View>
