@@ -29,6 +29,13 @@ function Login(){
 
     function toggleLogin(){
         setLogin(!login)
+        setUsername('')
+        setName('')
+        setPassword('')
+        setConfirmationPassword('')
+        setBirthdate('')
+        setEmail('')
+        setConfirmationEmail('')
     }
     
     function handleSignIn(){
