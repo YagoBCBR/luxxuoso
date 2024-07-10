@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, ActivityIndicator } from 'react-native';
 
 import { Container, 
         Title, 
@@ -17,6 +17,8 @@ import {
         WelcomeTitleBold, 
         WelcomeSubTitle } from '../NewAccount/styles'
 
+import { AuthContext } from '../../contexts/auth'
+
 function Login(){
     const [login, setLogin] = useState(true);
     const [name, setName] = useState("");
@@ -26,6 +28,8 @@ function Login(){
     const [password, setPassword] = useState("");
     const [confirmationPassword, setConfirmationPassword] = useState("");
     const [birthdate, setBirthdate] = useState("");
+
+    const { signUp, signIn, loadingAuth } = useContext(AuthContext);
 
     function toggleLogin(){
         setLogin(!login)
@@ -38,23 +42,33 @@ function Login(){
         setConfirmationEmail('')
     }
     
-    function handleSignIn(){
+    async function handleSignIn(){
         if(email === '' || password === ''){
             console.log("PREENCHA TODOS OS CAMPOS")
-            return
+            return;
         }
 
-        // Fazer o login do user
+        await signIn(email, password)
 
     }
 
-    function handleSignUp(){
-        if(name === '' || username === '' || email === '' || confirmationEmail === '' || confirmationEmail != email || password === '' || confirmationPassword === '' || confirmationPassword != password || birthdate === ''){
+    async function handleSignUp(){
+        if(name === '' || username === '' || email === '' || confirmationEmail === '' || password === '' || confirmationPassword === '' || birthdate === ''){
             console.log("PREENCHA TODOS OS CAMPOS PARA CADASTRAR")
-            return
+            return;
         }
 
-        // Fazer o login do user
+        if(confirmationEmail != email){
+            console.log("E-MAILS NÃO ESTÃO CORRETOS")
+            return;
+        }
+
+        if(confirmationPassword != password){
+            console.log("AS SENHAS ESTÃO DIFERENTES")
+            return;
+        }
+
+        await signUp(name, username, email, password, birthdate)
         
     }
 
@@ -66,7 +80,7 @@ function Login(){
                 />
                 <AreaInput>
                     <Input
-                        placeholder="Digite seu usuário"
+                        placeholder="Digite seu e-mail"
                         value={email}
                         onChangeText={ (text) => setEmail(text) }
                     />
@@ -79,13 +93,21 @@ function Login(){
                     />
                 </AreaInput>
                 <Button onPress={handleSignIn}>
-                    <ButtonText>ENTRAR</ButtonText>
+                    {loadingAuth ? (
+                        <ActivityIndicator size={20} color="#fff"/>
+                    ) : (
+                        <ButtonText>ENTRAR</ButtonText>
+                    )}
                 </Button>
                 <View>
                     <CreateAccountText>Não possui uma conta? Crie agora mesmo!</CreateAccountText>
                 </View>
                 <ButtonCreateAccount onPress={toggleLogin}>
-                    <ButtonTextCreateAccount>CRIAR CONTA</ButtonTextCreateAccount>
+                    {loadingAuth ? (
+                        <ActivityIndicator size={20} color="#fff"/>
+                    ) : (
+                        <ButtonTextCreateAccount>CRIAR CONTA</ButtonTextCreateAccount>
+                    )}        
                 </ButtonCreateAccount>
     
             </Container>
@@ -156,9 +178,12 @@ function Login(){
                 <CreateAccountText>Já possui uma conta? Faça login abaixo!</CreateAccountText>
             </View>
             <ButtonCreateAccount onPress={toggleLogin}>
-                <ButtonTextCreateAccount>FAZER LOGIN NA MINHA CONTA</ButtonTextCreateAccount>
+                {loadingAuth ? (
+                    <ActivityIndicator size={20} color="#fff"/>
+                ) : (
+                    <ButtonTextCreateAccount>FAZER LOGIN NA MINHA CONTA</ButtonTextCreateAccount>
+                )}
             </ButtonCreateAccount>
-
         </Container>
     )
 }
